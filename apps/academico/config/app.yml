@@ -1,6 +1,4 @@
 
 all:
-  .settings:
-     enabled_modules:      [default, sfGuardGroup, sfGuardUser, sfGuardPermission]
   sf_guard_plugin:
      routes_register: false

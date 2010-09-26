@@ -1,0 +1,18 @@
+Student:
+  columns:
+    name:
+      type: string(255)
+      notnull: true
+    email:
+      type: string(100)
+      notnull: true
+    user_id:
+      type: integer
+      notnull: true
+  relations:
+    sfGuardUser:
+      onDelete: CASCADE
+      onUpdate: CASCADE
+      local: user_id
+      foreign: id
+      foreignAlias: sfGuardUsers

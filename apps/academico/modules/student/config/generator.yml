@@ -16,6 +16,8 @@ generator:
       fields:  ~
       list:    ~
       filter:  ~
-      form:    ~
+      form:
+        display:
+          "NONE": [name, email, username, password, password_again]
       edit:    ~
       new:     ~

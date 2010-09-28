@@ -13,7 +13,9 @@ class StudentForm extends BaseStudentForm
   public function configure()
   {
       unset($this['user_id']);
+      
       $this->widgetSchema['username'] = new sfWidgetFormInputText();
+      $this->widgetSchema['username']->setAttribute('value', $this->getObject()->getSfGuardUser()->getUsername());
       $this->validatorSchema['username'] = new sfValidatorString(array('required' => true));
       $this->widgetSchema['password'] = new sfWidgetFormInputPassword();
       $this->validatorSchema['password'] = new sfValidatorString(array('max_length' => 128, 'required' => false));
@@ -26,11 +28,13 @@ class StudentForm extends BaseStudentForm
 
   public function  save($con = null) {
       $sf_guard_user = new sfGuardUser();
-      $sf_guard_user->setUsername($this->taintedValues['username']);
-      $sf_guard_user->setPassword($this->taintedValues['password']);
-      $sf_guard_user->setIsActive();
-      $sf_guard_user->save();
-      $this->getObject()->setUserId($sf_guard_user->getId());
+      $name = explode(" ", $this->taintedValues['name']);
+      $this->getObject()->getSfGuardUser()->setFirstName($name[0]);
+      $this->getObject()->getSfGuardUser()->setLastName($name[count($name)-1]);
+      $this->getObject()->getSfGuardUser()->setUsername($this->taintedValues['username']);
+      $this->getObject()->getSfGuardUser()->setPassword($this->taintedValues['password']);
+      $this->getObject()->getSfGuardUser()->setEmailAddress($this->taintedValues['email']);
+      $this->getObject()->getSfGuardUser()->setIsActive();
       parent::save($con);
   }
 }

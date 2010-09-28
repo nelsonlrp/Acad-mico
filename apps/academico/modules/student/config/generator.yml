@@ -14,8 +14,10 @@ generator:
     config:
       actions: ~
       fields:  ~
-      list:    ~
-      filter:  ~
+      list:
+        display: [=name, email]
+      filter:
+        display: [=name, email]
       form:
         display:
           "NONE": [name, email, username, password, password_again]

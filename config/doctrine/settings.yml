@@ -1,0 +1,5 @@
+all:
+  .settings:
+    # Form security secret (CSRF protection)
+     default_culture: pt_BR
+     i18n: true

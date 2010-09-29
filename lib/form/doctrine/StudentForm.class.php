@@ -13,7 +13,11 @@ class StudentForm extends BaseStudentForm
   public function configure()
   {
       unset($this['user_id']);
-      
+      $this->validatorSchema['email'] = new sfValidatorAnd(array(
+          $this->validatorSchema['email'],
+          new sfValidatorEmail(),
+        ));
+
       $this->widgetSchema['username'] = new sfWidgetFormInputText();
       $this->widgetSchema['username']->setAttribute('value', $this->getObject()->getSfGuardUser()->getUsername());
       $this->validatorSchema['username'] = new sfValidatorString(array('required' => true));

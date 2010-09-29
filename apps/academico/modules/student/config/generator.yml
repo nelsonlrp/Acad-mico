@@ -13,13 +13,17 @@ generator:
 
     config:
       actions: ~
-      fields:  ~
+      fields:
+        name: {label: Nome}
       list:
         display: [=name, email]
+        title: Alunos
       filter:
         display: [=name, email]
       form:
         display:
           "NONE": [name, email, username, password, password_again]
-      edit:    ~
-      new:     ~
+      edit:
+        title: Editar aluno
+      new:
+        title: Novo aluno

@@ -8,13 +8,16 @@
  * @property string $name
  * @property string $email
  * @property integer $user_id
+ * @property sfGuardUser $sfGuardUser
  * 
- * @method string    getName()    Returns the current record's "name" value
- * @method string    getEmail()   Returns the current record's "email" value
- * @method integer   getUserId()  Returns the current record's "user_id" value
- * @method Professor setName()    Sets the current record's "name" value
- * @method Professor setEmail()   Sets the current record's "email" value
- * @method Professor setUserId()  Sets the current record's "user_id" value
+ * @method string      getName()        Returns the current record's "name" value
+ * @method string      getEmail()       Returns the current record's "email" value
+ * @method integer     getUserId()      Returns the current record's "user_id" value
+ * @method sfGuardUser getSfGuardUser() Returns the current record's "sfGuardUser" value
+ * @method Professor   setName()        Sets the current record's "name" value
+ * @method Professor   setEmail()       Sets the current record's "email" value
+ * @method Professor   setUserId()      Sets the current record's "user_id" value
+ * @method Professor   setSfGuardUser() Sets the current record's "sfGuardUser" value
  * 
  * @package    academico
  * @subpackage model
@@ -45,6 +48,10 @@ abstract class BaseProfessor extends sfDoctrineRecord
     public function setUp()
     {
         parent::setUp();
-        
+        $this->hasOne('sfGuardUser', array(
+             'local' => 'user_id',
+             'foreign' => 'id',
+             'onDelete' => 'CASCADE',
+             'onUpdate' => 'CASCADE'));
     }
 }

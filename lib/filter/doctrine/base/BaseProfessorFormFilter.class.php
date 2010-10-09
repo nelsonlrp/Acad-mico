@@ -15,13 +15,13 @@ abstract class BaseProfessorFormFilter extends BaseFormFilterDoctrine
     $this->setWidgets(array(
       'name'    => new sfWidgetFormFilterInput(array('with_empty' => false)),
       'email'   => new sfWidgetFormFilterInput(array('with_empty' => false)),
-      'user_id' => new sfWidgetFormFilterInput(array('with_empty' => false)),
+      'user_id' => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('sfGuardUser'), 'add_empty' => true)),
     ));
 
     $this->setValidators(array(
       'name'    => new sfValidatorPass(array('required' => false)),
       'email'   => new sfValidatorPass(array('required' => false)),
-      'user_id' => new sfValidatorSchemaFilter('text', new sfValidatorInteger(array('required' => false))),
+      'user_id' => new sfValidatorDoctrineChoice(array('required' => false, 'model' => $this->getRelatedModelName('sfGuardUser'), 'column' => 'id')),
     ));
 
     $this->widgetSchema->setNameFormat('professor_filters[%s]');
@@ -44,7 +44,7 @@ abstract class BaseProfessorFormFilter extends BaseFormFilterDoctrine
       'id'      => 'Number',
       'name'    => 'Text',
       'email'   => 'Text',
-      'user_id' => 'Number',
+      'user_id' => 'ForeignKey',
     );
   }
 }

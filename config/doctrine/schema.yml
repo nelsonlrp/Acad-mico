@@ -28,3 +28,10 @@ Professor:
     user_id:
       type: integer
       notnull: true
+  relations:
+    sfGuardUser:
+      onDelete: CASCADE
+      onUpdate: CASCADE
+      local: user_id
+      foreign: id
+      foreignAlias: sfGuardUsers

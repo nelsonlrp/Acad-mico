@@ -9,6 +9,10 @@
     <?php include_javascripts() ?>
   </head>
   <body>
+      <ul>
+          <li><?php echo link_to('Professor', '@professor'); ?></li>
+          <li><?php echo link_to('Aluno', '@student'); ?></li>
+      </ul>
     <?php echo $sf_content ?>
   </body>
 </html>

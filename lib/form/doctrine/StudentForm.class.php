@@ -40,5 +40,6 @@ class StudentForm extends BaseStudentForm
       $this->getObject()->getSfGuardUser()->setEmailAddress($this->taintedValues['email']);
       $this->getObject()->getSfGuardUser()->setIsActive();
       parent::save($con);
+      return $this->getObject();
   }
 }

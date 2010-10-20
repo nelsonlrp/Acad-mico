@@ -13,9 +13,17 @@ generator:
 
     config:
       actions: ~
-      fields:  ~
-      list:    ~
-      filter:  ~
-      form:    ~
-      edit:    ~
-      new:     ~
+      fields:
+        name: {label: Nome}
+      list:
+        display: [=name, email]
+        title: Professores
+      filter:
+        display: [=name, email]
+      form:
+        display:
+          "NONE": [name, email, username, password, password_again]
+      edit:
+        title: Editar Professor
+      new:
+        title: Novo professor

@@ -35,3 +35,22 @@ Professor:
       local: user_id
       foreign: id
       foreignAlias: sfGuardUsers
+
+Discipline:
+  columns:
+    code:
+      type: string(10)
+      notnull: true
+      unique: true
+    name:
+      type: string(255)
+      notnull: true
+    credits:
+      type: integer
+      notnull: true
+    workload:
+      type: integer
+      notnull: true
+    description:
+      type: string
+      notnull: true
